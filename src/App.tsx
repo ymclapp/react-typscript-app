@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { isDefaultClause } from 'typescript';
 import './App.css';
 
 
 import InputField from './components/InputField';
 import { Todo } from './components/model';
+import TodoList from './components/TodoList';
 
 
 const App: React.FC = () => {  //telling it it is a react functional component
@@ -16,7 +16,7 @@ const App: React.FC = () => {  //telling it it is a react functional component
     e.preventDefault();
 
     if (todo) {
-      setTodos([...todos, { id: Date.now(), todo, isDone: false }])
+      setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
       setTodo('');
     }
   };
@@ -27,6 +27,7 @@ const App: React.FC = () => {  //telling it it is a react functional component
     <div className="App">
       <span className='heading'>Taskify</span>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+      <TodoList todos={todos} setTodos={setTodos}/>
     </div>
   );
 };
